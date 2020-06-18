@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from newsim import *
 from geopy.distance import geodesic
+import sys
 
 def save_mean_and_std():
 	# Saving mean and standard deviation
@@ -149,3 +150,11 @@ def predict_epicenter():
 			x[file] = (dist_of_pred,ranks,time_27, time_30)
 
 	pickle.dump(x, open("dists.pkl", "wb"))
+
+if __name__ == "__main__":
+	if sys.argv[1] == "save_mean_and_std":
+		save_mean_and_std()
+	elif sys.argv[1] == "predict_abnormal_nodes":
+		predict_abnormal_nodes()
+	elif sys.argv[1] == "predict_epicenter":
+		predict_epicenter()

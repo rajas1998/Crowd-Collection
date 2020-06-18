@@ -1,8 +1,9 @@
 import pandas as pd
 import numpy as np
 import pickle
+import sys
 
-telecom_data = pd.read_csv(open("data/May,2020.csv", "r"))
+telecom_data = pd.read_csv(open(sys.argv[1], "r"))
 
 datetime_column = pd.to_datetime(telecom_data["Date Time"], format = "%Y-%m-%d %H:%M:%S")
 telecom_data["tot_seconds"] = datetime_column.dt.hour * 3600 + datetime_column.dt.minute * 60 + datetime_column.dt.second
